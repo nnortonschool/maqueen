@@ -11,6 +11,10 @@ input.onButtonPressed(Button.A, function () {
     move(660)
     turn(RIGHT)
     move(300)
+    basic.pause(1000)
+    move(145)
+    turn(LEFT)
+    move(1000)
 });
 
 function move(amnt: any) {
