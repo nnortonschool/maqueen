@@ -7,7 +7,7 @@ input.onButtonPressed(Button.A, function () {
     music.stopAllSounds()
 
     move(200)
-    turn(LEFT, 850)
+    turn(LEFT)
     move(660)
     turn(RIGHT)
     move(300)
@@ -19,16 +19,14 @@ function move(amnt: any) {
     maqueen.motorStop(maqueen.Motors.All)
 }
 
-function turn(dir: any, ms: any = 850) {
+function turn(dir: any, ms: any = 900) {
     if (dir == 'left') {
-        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 75)
-        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, 75)
-        basic.pause(ms)
-        maqueen.motorStop(maqueen.Motors.All)
+        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 75 / 2)
+        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, 75 / 2)
     } else {
-        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 75)
-        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, 75)
-        basic.pause(ms)
-        maqueen.motorStop(maqueen.Motors.All)
+        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 75 / 2)
+        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, 75 / 2)
     }
+    basic.pause(ms * 2)
+    maqueen.motorStop(maqueen.Motors.All)
 }
