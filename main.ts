@@ -16,31 +16,31 @@ input.onButtonPressed(Button.A, function () {
     // turn(LEFT)
     // move(1000)
 
-    let path: any = [{action: "fwd", distance: 200},
-                     {action: "left"}, 
-                     {action: "fwd", distance: 660},
-                     {action: "right"},
-                     {action: "fwd", distance: 300},
-                     {action: "pause", time: 1000},
-                     {action: "fwd", distance: 145},
-                     {action: "left"},
-                     {action: "fwd", distance: 1000}]
+    let path: {action: string, amount: number}[] = [{ action: "fwd", amount: 200 },
+    { action: "left", amount: 0 },
+    { action: "fwd", amount: 660 },
+    { action: "right", amount: 0 },
+    { action: "fwd", amount: 300 },
+    { action: "pause", amount: 1000 },
+    { action: "fwd", amount: 145 },
+    { action: "left", amount: 0 },
+    { action: "fwd", amount: 1000 }]
     parse(path)
 });
 
-function parse(path: any) {
-    path.forEach((item: any) => {
-        switch (item.distance) {
-            case "fwd":
-                move(item.distance)
-            case "left":
-                turn(LEFT)
-            case "right":
-                turn(RIGHT)
-            case "pause":
-                basic.pause(item.time)
-            default:
-                return
+function parse(path: Array<Object>) {
+    path.forEach((item: {action: string, amount: number}) => {
+            switch (item.action) {
+                case "fwd":
+                    move(item.amount)
+                case "left":
+                    turn(LEFT)
+                case "right":
+                    turn(RIGHT)
+                case "pause":
+                    basic.pause(item.amount)
+                default:
+                    return
         }
     })
 }
