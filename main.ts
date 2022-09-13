@@ -36,3 +36,100 @@ function turn(dir: any, ms: any = 855) {
         maqueen.motorStop(maqueen.Motors.All)
     }
 }
+
+// BLINKER
+
+const leftTurn: Image[] = [
+    images.createImage(`
+            . . . . .
+            . . . . .
+            # . . . .
+            . . . . .
+            . . . . .
+            `),
+    images.createImage(`
+            . . . . .
+            # . . . .
+            # # . . .
+            # . . . .
+            . . . . .
+            `),
+    images.createImage(`
+            # . . . .
+            . # . . .
+            # # # . .
+            . # . . .
+            # . . . .
+            `),
+    images.createImage(`
+            . # . . .
+            . . # . .
+            # # # # .
+            . . # . .
+            . # . . .
+            `),
+    images.createImage(`
+            . . # . .
+            . . . # .
+            # # # # #
+            . . . # .
+            . . # . .
+            `)
+]
+const rightTurn: Image[] = [
+    images.createImage(`
+            . . . . .
+            . . . . .
+            . . . . #
+            . . . . .
+            . . . . .
+            `),
+    images.createImage(`
+            . . . . .
+            . . . . #
+            . . . # #
+            . . . . #
+            . . . . .
+            `),
+    images.createImage(`
+            . . . . #
+            . . . # .
+            . . # # #
+            . . . # .
+            . . . . #
+            `),
+    images.createImage(`
+            . . . # .
+            . . # . .
+            . # # # #
+            . . # . .
+            . . . # .
+            `),
+    images.createImage(`
+            . . # . .
+            . # . . .
+            # # # # #
+            . # . . .
+            . . # . .
+            `)
+]
+
+function blinker (turn: Image[]) {
+    turn.forEach((image: Image) => {
+        image.showImage(0)
+        basic.pause(1)
+    })
+    basic.pause(500)
+    turn.forEach((image: Image) => {
+        image.showImage(0)
+        basic.pause(1)
+    })
+    basic.pause(500)
+    images.createImage(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `).showImage(0)
+}
